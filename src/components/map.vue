@@ -1,5 +1,5 @@
 <template>
-  <div ref="map" style="height: 400px; width: 600px;"></div>
+  <div ref="map" id="map-container"></div>
 </template>
 
 <script>
@@ -35,7 +35,11 @@ export default {
       console.log('debug: ' + this.chart)
       this.chart.setOption(options)
       let bmap = this.chart.getModel().getComponent('bmap').getBMap()
+      // eslint-disable-next-line
       bmap.addControl(new BMap.MapTypeControl())
+      bmap.setMapStyleV2({
+        styleId: '59a80bc22d507e09700207fce541bc16'
+      })
     }
   },
   mounted () {
@@ -45,5 +49,9 @@ export default {
 </script>
 
 <style>
-
+#map-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
 </style>
